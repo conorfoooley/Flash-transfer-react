@@ -136,7 +136,7 @@ export const CurrencyList: any[] = [
         img: mu9
     },
     {
-        value: 9,
+        value: 11,
         label: "FLOKI",
         img: mu12
     },

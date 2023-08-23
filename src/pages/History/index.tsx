@@ -6,15 +6,17 @@ import {
   Select,
   TextField,
   Typography,
+  Modal,
+  Chip,
 } from "@mui/material";
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import sett from "../../assests/Images/sett.png";
 import wallet from "../../assests/Images/headwallet.png";
 import notification from "../../assests/Images/notification.png";
 import user from "../../assests/Images/User.png";
-import "../../font.css/index.css"
+import "../../font.css/index.css";
 import Layout from "../../components/Layout";
-import Pagination from '@mui/material/Pagination';
+import Pagination from "@mui/material/Pagination";
 import CommonNav from "../../components/CommonNav";
 import priceimg2 from "../../assests/Images/arrow.png";
 import priceimg1 from "../../assests/Images/btnB.png";
@@ -25,6 +27,7 @@ import Type from "../../assests/Logo/type.png";
 import Search from "../../assests/Logo/search.png";
 import Calender from "../../assests/Logo/calander.png";
 import date from "../../assests/Logo/date.png";
+import dateThick from "../../assests/Logo/date_thick.svg";
 import location from "../../assests/Logo/location.png";
 import Track from "../../assests/Logo/track.png";
 import { Box } from "@mui/system";
@@ -37,6 +40,8 @@ import HistoryItem from "./historyItem";
 import { Link } from "react-router-dom";
 import { SWAP_CONTRACT_ADDRESS } from "../../constants";
 import { getHistory } from "../../Services/auth";
+import btcImg from "../../assests/Images/bitcoinicon.png";
+import agent from "../../assests/Images/argent.png";
 
 export interface Props {
   event?: any;
@@ -56,17 +61,44 @@ export type IVisitCard = {
   success: "Complete" | "In process" | "Cencel" | "Pending";
   price: string;
   dateimg: any;
-  date: string
+  date: string;
+};
+
+interface HistoryInterface {
+  country: string;
+  fullName: string;
+  status: string;
+  createdAt: string;
+  paymentMethod: string;
+  avartar: string;
+  amount: string;
+  method: string;
+  transferTime: string;
+  txnHash: string;
+  date: string;
 }
+
 const History = () => {
   const [age, setAge] = React.useState("");
+  const [open, setOpen] = useState(false);
   const [curPage, setCurPage] = React.useState<number>(1);
   const [showCount, setShowCount] = React.useState<number>(10);
-  const [historyList, setHistorylist] = React.useState([]);
+  const [historyList, setHistorylist] = React.useState<HistoryInterface[]>([]);
+  const [modalItems, setModalItems] = React.useState<HistoryInterface>();
 
-  const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+  const handleModalOpen = (param: HistoryInterface) => {
+    setOpen(true);
+    setModalItems(param);
+    console.log("this is modalItems", modalItems);
+  };
+  const handleModalClose = () => setOpen(false);
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
     setCurPage(value);
-  }
+  };
   const handleChange = (event: any) => {
     // setCurPage(1);
     // setShowCount(parseInt(event.target.value));
@@ -74,6 +106,23 @@ const History = () => {
 
   const classes = useStyles();
   const history = useHistory();
+
+  const style = {
+    position: "absolute" as "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 850,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
+
+  const editDetail = () => {
+    console.log("This is Edit details");
+  };
+
   const totalPage = useMemo(() => {
     if (history) {
       const HisLength = history.length;
@@ -83,9 +132,9 @@ const History = () => {
         return Math.floor(HisLength / showCount) + 1;
       }
     } else {
-      return 0
+      return 0;
     }
-  }, [history, showCount])
+  }, [history, showCount]);
   const curHistory = useMemo(() => {
     if (history && curPage) {
       const firstIndex = (curPage - 1) * showCount;
@@ -98,19 +147,45 @@ const History = () => {
       return null;
     }
   }, [history, curPage, totalPage, showCount]);
-  // 
+  //
   const getData = async () => {
-
     await getHistory().then((res) => {
-
-      setHistorylist(res)
-      console.log("alerts", historyList)
-    })
-
-  }
+      setHistorylist(res);
+      console.log("alerts", historyList);
+    });
+  };
   useEffect(() => {
-    getData()
-  }, [])
+    // getData();
+    setHistorylist([
+      {
+        country: "United States",
+        fullName: "Floyed Miles",
+        status: "completed",
+        createdAt: "2023-8-16",
+        paymentMethod: "crypto",
+        avartar: btcImg,
+        amount: "0,0050 BTC",
+        method: "Bitcoin",
+        transferTime: "10 Min",
+        txnHash: "pending",
+        date: "Dec 30, 2019 07:52",
+      },
+      {
+        country: "United Kingdom",
+        fullName: "Floyed Mill",
+        status: "completed",
+        createdAt: "2023-8-25",
+        avartar: agent,
+        paymentMethod: "cash",
+        amount: "$100",
+        method: "Cash",
+        transferTime: "1 Min",
+        txnHash: "bscscan.com/0x2454545454545dede",
+        date: "Dec 30, 2019 07:52",
+      },
+    ]);
+  }, []);
+
   const History = [
     {
       Location: location,
@@ -288,20 +363,16 @@ const History = () => {
   return (
     <Grid>
       <Layout>
-
         {/* <Grid>
         <CommonNav login2="Login" Signup2="Signup" priceimg1={priceimg1} priceimg2={priceimg2} img3={sett} img1={wallet} img4={user} img2={notification} name="100$" />
       </Grid> */}
-        <Grid sx={{ backgroundColor: "#F7FDFF", }}>
-
-
+        <Grid sx={{ backgroundColor: "#F7FDFF" }}>
           <Grid
             container
             sx={{
               transform: { lg: "scalex(0.9)", xs: "none" },
               display: "flex",
               justifyContent: "center",
-
             }}
           >
             <Grid
@@ -320,14 +391,15 @@ const History = () => {
                 sx={{
                   fontFamily: "Inter !important",
                   fontSize: { xs: "24px", md: "48px" },
-                  fontsize: "Inter !important", fontWeight: { xs: "700", md: "800" },
+                  fontsize: "Inter !important",
+                  fontWeight: { xs: "700", md: "800" },
 
                   lineHeight: { xs: "32px", md: "60px" },
                 }}
               >
                 History
               </Typography>
-              <Box sx={{ display: { lg: "flex", xs: "none" }, }}>
+              <Box sx={{ display: { lg: "flex", xs: "none" } }}>
                 <Link to="/">
                   <AppButton
                     textTransform="none"
@@ -341,12 +413,12 @@ const History = () => {
                     borderRadius="6px"
                     backgroundColor="#5D5FEF"
                     height="48px"
-                  // endIcon={<ArrowForwardIcon />}
-                  // margin={"10px 10px 0px 0px"}
+                    // endIcon={<ArrowForwardIcon />}
+                    // margin={"10px 10px 0px 0px"}
                   />
                 </Link>
               </Box>
-              <Box sx={{ display: { lg: "none", xs: "flex" }, }}>
+              <Box sx={{ display: { lg: "none", xs: "flex" } }}>
                 <AppButton
                   textTransform="none"
                   title={"Start New Transfer"}
@@ -359,8 +431,8 @@ const History = () => {
                   borderRadius="6px"
                   backgroundColor="#5D5FEF"
                   height="48px"
-                // endIcon={<ArrowForwardIcon />}
-                // margin={"10px 10px 0px 0px"}
+                  // endIcon={<ArrowForwardIcon />}
+                  // margin={"10px 10px 0px 0px"}
                 />
               </Box>
               {/* </Button> */}
@@ -395,13 +467,18 @@ const History = () => {
                     InputProps={{
                       // color: "#6A6A6A",
                       disableUnderline: true,
-                      style: { color: "#6A6A6A", width: "118px", fontSize: "12px " },
+                      style: {
+                        color: "#6A6A6A",
+                        width: "118px",
+                        fontSize: "12px ",
+                      },
                     }}
                     placeholder="FIND TRANSACTION "
                   />
                   <Button
                     sx={{
-                      fontsize: "Inter !important", fontWeight: "500",
+                      fontsize: "Inter !important",
+                      fontWeight: "500",
                       fontSize: "12px",
                       color: "black",
                       lineHeight: "15px",
@@ -482,7 +559,7 @@ const History = () => {
                     onChange={handleChange}
                     displayEmpty
                   >
-                    <MenuItem value={0} >All</MenuItem>
+                    <MenuItem value={0}>All</MenuItem>
                     <MenuItem value={1}>Pay in cash</MenuItem>
                     <MenuItem value={2}>Crypto</MenuItem>
                     <MenuItem value={3}>Credit Card </MenuItem>
@@ -503,32 +580,35 @@ const History = () => {
                 flexDirection: "row",
                 padding: "10px 20px",
                 justifyContent: "space-between",
-              }}>
-              <Typography sx={{
-
-                fontFamily: "Inter !important",
-                fontWeight: "500 !important",
-                fontSize: "12px !important",
-                lineHeight: "15px !important",
-                color: "#6A6A6A !important",
-                textTransform: "uppercase"
-              }}>find transaction</Typography>
-
-              <Typography sx={{
-                fontFamily: "Inter !important",
-                fontsize: "Inter !important", fontWeight: "500 !important",
-                fontSize: "12px !important",
-                lineHeight: "15px !important",
-                color: "#6A6A6A !important",
-              }}>DATE:</Typography>
-            </Grid>
-            <Grid
-              md={12}
-              sm={12}
-              xs={12}
-
+              }}
             >
-              {/* <>
+              <Typography
+                sx={{
+                  fontFamily: "Inter !important",
+                  fontWeight: "500 !important",
+                  fontSize: "12px !important",
+                  lineHeight: "15px !important",
+                  color: "#6A6A6A !important",
+                  textTransform: "uppercase",
+                }}
+              >
+                find transaction
+              </Typography>
+
+              <Typography
+                sx={{
+                  fontFamily: "Inter !important",
+                  fontsize: "Inter !important",
+                  fontWeight: "500 !important",
+                  fontSize: "12px !important",
+                  lineHeight: "15px !important",
+                  color: "#6A6A6A !important",
+                }}
+              >
+                DATE:
+              </Typography>
+            </Grid>
+            <Grid md={12} sm={12} xs={12}>
               {historyList.map((item: any) => {
                 return (
                   <Grid
@@ -538,10 +618,13 @@ const History = () => {
                     xs={12}
                     sx={{
                       display: "flex",
-                      justifyContent: { md: "center", sm: "center", xs: "center" },
+                      justifyContent: {
+                        md: "center",
+                        sm: "center",
+                        xs: "center",
+                      },
                     }}
                   >
-
                     <Grid
                       item
                       md={10}
@@ -556,7 +639,6 @@ const History = () => {
                         },
                       }}
                     >
-
                       <Grid
                         md={12}
                         sm={12}
@@ -602,16 +684,14 @@ const History = () => {
                             <Typography
                               sx={{
                                 marginTop: "2px",
-                                fontsize: "Inter !important", fontWeight: "400",
+                                fontsize: "Inter !important",
+                                fontWeight: "400",
                                 fontSize: "14px",
                                 lineHeight: "20px",
                                 color: "#6B7280",
                               }}
                             >
-
-                              {
-                                item.country
-                              }
+                              {item.country}
                             </Typography>
                           </Box>
                           <Box
@@ -624,7 +704,8 @@ const History = () => {
                           >
                             <Typography
                               sx={{
-                                fontsize: "Inter !important", fontWeight: "400",
+                                fontsize: "Inter !important",
+                                fontWeight: "400",
                                 fontSize: { md: "24px", xs: "14px" },
                                 lineHeight: "32px",
                               }}
@@ -655,7 +736,8 @@ const History = () => {
                             <Typography
                               sx={{
                                 marginRight: "15px",
-                                fontsize: "Inter !important", fontWeight: "400",
+                                fontsize: "Inter !important",
+                                fontWeight: "400",
                                 fontSize: "14px",
                                 lineHeight: "20px",
                                 color: "#5D5FEF",
@@ -671,15 +753,380 @@ const History = () => {
                                 fontSize: { md: "14px", xs: "12px" },
                                 lineHeight: "20px",
                                 color: "#6B7280",
-                                
-                                cursor:"pointer"
-                              }}
-                            >
 
+                                cursor: "pointer",
+                              }}
+                              onClick={() => handleModalOpen(item)}
+                            >
                               Show detail
-                              {/* <a href={BSCSCAN[DEFAULT_NETWORK] + "tx/" + txHash} target={"_blank"}>
-                </a> 
+                              {/* <a
+                                href={BSCSCAN[DEFAULT_NETWORK] + "tx/" + txHash}
+                                target={"_blank"}
+                              ></a> */}
                             </Typography>
+                            <Modal
+                              open={open}
+                              onClose={handleModalClose}
+                              aria-labelledby="modal-modal-title"
+                              aria-describedby="modal-modal-description"
+                            >
+                              <Box sx={style}>
+                                <Grid xs={12} md={12}>
+                                  <Grid
+                                    container
+                                    id="modal-modal-title"
+                                    xs={12}
+                                    sx={{
+                                      display: "flex",
+                                      justifyContent: "space-between",
+                                    }}
+                                  >
+                                    <Grid
+                                      item
+                                      sx={{
+                                        display: "flex",
+                                      }}
+                                    >
+                                      <img
+                                        src={modalItems?.avartar}
+                                        alt=""
+                                        style={{ height: "100%" }}
+                                      />
+                                      <Grid>
+                                        <Typography
+                                          sx={{
+                                            padding: "2px 10px",
+                                            fontWeight: "700",
+                                            fontSize: "18px",
+                                            color: "black",
+                                            lineHeight: "0.8",
+                                          }}
+                                        >
+                                          {modalItems?.amount}
+                                        </Typography>
+                                        <Typography
+                                          sx={{
+                                            padding: "2px 10px",
+                                            fontWeight: "700",
+                                            fontSize: "18px",
+                                            lineHeight: "16px",
+                                            color: "black",
+                                          }}
+                                        >
+                                          {modalItems?.method}
+                                        </Typography>
+                                      </Grid>
+                                    </Grid>
+                                    <Grid
+                                      item
+                                      sx={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                      }}
+                                    >
+                                      <Chip label="Edit" onClick={editDetail} />
+                                    </Grid>
+                                  </Grid>
+                                  <Grid
+                                    container
+                                    xs={12}
+                                    id="modal-modal-description"
+                                    style={{ marginTop: "30px" }}
+                                  >
+                                    <Grid
+                                      xs={12}
+                                      sx={{
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                      }}
+                                    >
+                                      <Typography
+                                        sx={{
+                                          padding: "2px 10px",
+                                          fontWeight: "500",
+                                          fontSize: "20px",
+                                          lineHeight: "16px",
+                                          color: "black",
+                                        }}
+                                      >
+                                        You sent
+                                      </Typography>
+                                      <Typography
+                                        sx={{
+                                          padding: "2px 10px",
+                                          fontWeight: "700",
+                                          fontSize: "20px",
+                                          lineHeight: "16px",
+                                          color: "black",
+                                        }}
+                                      >
+                                        {modalItems?.paymentMethod === "cash"
+                                          ? modalItems?.amount
+                                          : modalItems?.amount
+                                              .concat(" = ")
+                                              ?.concat("100$")}
+                                      </Typography>
+                                    </Grid>
+                                    <Grid
+                                      style={{ marginTop: "15px" }}
+                                      xs={12}
+                                      sx={{
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                      }}
+                                    >
+                                      <Typography
+                                        sx={{
+                                          padding: "2px 10px",
+                                          fontWeight: "500",
+                                          fontSize: "20px",
+                                          lineHeight: "16px",
+                                          color: "black",
+                                        }}
+                                      >
+                                        Transfer Rate
+                                      </Typography>
+                                      <Typography
+                                        sx={{
+                                          padding: "2px 10px",
+                                          fontWeight: "700",
+                                          fontSize: "20px",
+                                          lineHeight: "16px",
+                                          color: "black",
+                                        }}
+                                      >
+                                        0,000050 = 1$
+                                      </Typography>
+                                    </Grid>
+                                    <Grid
+                                      style={{ marginTop: "15px" }}
+                                      sx={{
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                      }}
+                                      xs={12}
+                                    >
+                                      <Typography
+                                        sx={{
+                                          padding: "2px 10px",
+                                          fontWeight: "500",
+                                          fontSize: "20px",
+                                          lineHeight: "16px",
+                                          color: "black",
+                                        }}
+                                      >
+                                        Fee
+                                      </Typography>
+                                      <Typography
+                                        sx={{
+                                          padding: "2px 10px",
+                                          fontWeight: "600",
+                                          fontSize: "20px",
+                                          lineHeight: "16px",
+                                          color: "black",
+                                        }}
+                                      >
+                                        +2.50 BUSD
+                                      </Typography>
+                                    </Grid>
+                                    <Grid
+                                      style={{ marginTop: "15px" }}
+                                      sx={{
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                      }}
+                                      xs={12}
+                                    >
+                                      <Typography
+                                        sx={{
+                                          padding: "2px 10px",
+                                          fontWeight: "500",
+                                          fontSize: "20px",
+                                          lineHeight: "16px",
+                                          color: "black",
+                                        }}
+                                      >
+                                        Transfer Time
+                                      </Typography>
+                                      <Typography
+                                        sx={{
+                                          padding: "2px 10px",
+                                          fontWeight: "600",
+                                          fontSize: "20px",
+                                          lineHeight: "16px",
+                                          color: "black",
+                                        }}
+                                      >
+                                        {modalItems?.transferTime}
+                                      </Typography>
+                                    </Grid>
+                                    <Grid
+                                      style={{ marginTop: "15px" }}
+                                      sx={{
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                      }}
+                                      xs={12}
+                                    >
+                                      <Typography
+                                        sx={{
+                                          padding: "2px 10px",
+                                          fontWeight: "500",
+                                          fontSize: "20px",
+                                          lineHeight: "16px",
+                                          color: "black",
+                                        }}
+                                      >
+                                        Recipient Gets
+                                      </Typography>
+                                      <Typography
+                                        sx={{
+                                          padding: "2px 10px",
+                                          fontWeight: "600",
+                                          fontSize: "20px",
+                                          lineHeight: "16px",
+                                          color: "red",
+                                        }}
+                                      >
+                                        {modalItems?.paymentMethod === "cash"
+                                          ? "0.0050 BTC"
+                                          : "$100"}
+                                      </Typography>
+                                    </Grid>
+                                    <Grid
+                                      style={{ marginTop: "15px" }}
+                                      sx={{
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                      }}
+                                      xs={12}
+                                    >
+                                      <Typography
+                                        sx={{
+                                          padding: "2px 10px",
+                                          fontWeight: "500",
+                                          fontSize: "20px",
+                                          lineHeight: "16px",
+                                          color: "black",
+                                        }}
+                                      >
+                                        Total Paid
+                                      </Typography>
+                                      {modalItems?.paymentMethod === "cash" && (
+                                        <Typography
+                                          sx={{
+                                            padding: "2px 10px",
+                                            fontWeight: "600",
+                                            fontSize: "20px",
+                                            lineHeight: "16px",
+                                            color: "black",
+                                          }}
+                                        >
+                                          $102.50
+                                        </Typography>
+                                      )}
+                                      {modalItems?.paymentMethod ===
+                                        "crypto" && (
+                                        <Grid sx={{ display: "flex" }}>
+                                          <Typography
+                                          sx={{
+                                            padding: "2px 10px",
+                                            fontWeight: "600",
+                                            fontSize: "20px",
+                                            lineHeight: "16px",
+                                            color: "red",
+                                          }}
+                                        >
+                                          0.0050BTC
+                                        </Typography>
+                                        <Typography
+                                          sx={{
+                                            padding: "2px 10px",
+                                            fontWeight: "600",
+                                            fontSize: "20px",
+                                            lineHeight: "16px",
+                                            color: "black",
+                                          }}
+                                        > = $102.50</Typography>
+                                        </Grid>
+                                      )}
+                                    </Grid>
+                                    <Grid
+                                      style={{ marginTop: "15px" }}
+                                      sx={{
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                      }}
+                                      xs={12}
+                                    >
+                                      <Typography
+                                        sx={{
+                                          padding: "2px 10px",
+                                          fontWeight: "500",
+                                          fontSize: "20px",
+                                          lineHeight: "16px",
+                                          color: "black",
+                                        }}
+                                      >
+                                        Transaction identification (Txn hash)
+                                      </Typography>
+                                      <Typography
+                                        sx={{
+                                          padding: "2px 10px",
+                                          fontWeight: "600",
+                                          fontSize: "20px",
+                                          lineHeight: "16px",
+                                          color: "black",
+                                        }}
+                                      >
+                                        {modalItems?.txnHash}
+                                      </Typography>
+                                    </Grid>
+                                    <Grid
+                                      style={{ marginTop: "15px" }}
+                                      sx={{
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                      }}
+                                      xs={12}
+                                    >
+                                      <Typography
+                                        sx={{
+                                          padding: "2px 10px",
+                                          fontWeight: "500",
+                                          fontSize: "20px",
+                                          lineHeight: "16px",
+                                          color: "black",
+                                        }}
+                                      >
+                                        Date
+                                      </Typography>
+                                      <Grid sx={{ display: "flex" }}>
+                                        <img
+                                          src={dateThick}
+                                          style={{
+                                            width: "20px",
+                                            height: "16px",
+                                            marginRight: "5px",
+                                          }}
+                                        />
+                                        <Typography
+                                          sx={{
+                                            padding: "2px 10px",
+                                            fontWeight: "600",
+                                            fontSize: "20px",
+                                            lineHeight: "16px",
+                                            color: "black",
+                                          }}
+                                        >
+                                          {item.date}
+                                        </Typography>
+                                      </Grid>
+                                    </Grid>
+                                  </Grid>
+                                </Grid>
+                              </Box>
+                            </Modal>
                           </Box>
                         </Grid>
                         <Grid
@@ -705,7 +1152,8 @@ const History = () => {
                               sx={{
                                 padding: "2px 10px",
                                 borderRadius: "10px",
-                                fontsize: "Inter !important", fontWeight: "500",
+                                fontsize: "Inter !important",
+                                fontWeight: "500",
                                 fontSize: "12px",
                                 lineHeight: "16px",
                                 color: "white",
@@ -715,7 +1163,7 @@ const History = () => {
                               }}
                             >
                               {item.status}
-                              {/* {backColors.success} 
+                              {/* { {backColors.success}  */}
                             </Typography>
 
                             <Typography
@@ -729,19 +1177,19 @@ const History = () => {
                                 display: "inline-block",
                                 // flexDirection:"row",
                                 borderRadius: "10px",
-                                fontsize: "Inter !important", fontWeight: "700",
+                                fontsize: "Inter !important",
+                                fontWeight: "700",
                                 fontSize: { md: "24px", xs: "14px" },
                                 lineHeight: "32px",
                                 color: "#1F2937",
                               }}
                             >
-                              {/* sas *{
+                              {/* { sas *{
                                 item.transaction
                               }
-                              {/* ${usdPrice.toFixed(3)} *
+                              { ${usdPrice.toFixed(3)}  */}
                             </Typography>
                           </Box>
-
                           <Box
                             sx={{
                               marginTop: "20px",
@@ -752,7 +1200,6 @@ const History = () => {
                             }}
                           >
                             <img
-
                               src={date}
                               style={{
                                 width: "20px",
@@ -769,221 +1216,228 @@ const History = () => {
                                 color: "#6B7280",
                               }}
                             >
-
                               {item.createdAt}
                             </Typography>
                           </Box>
                         </Grid>
                       </Grid>
                     </Grid>
-
                   </Grid>
-                )
+                );
               })}
-              </> */}
+
               {curHistory &&
                 curHistory?.map((i: any, index: number) => {
                   return (
-                    <HistoryItem key={index} txHash={i.hash} timestamp={i.timeStamp} index={index} locationName="Senegal" name="Darlene Robertson" email="nathan.roberts@example.com" />
+                    <HistoryItem
+                      key={index}
+                      txHash={i.hash}
+                      timestamp={i.timeStamp}
+                      index={index}
+                      locationName="Senegal"
+                      name="Darlene Robertson"
+                      email="nathan.roberts@example.com"
+                    />
                   );
-                })
-              }
-
+                })}
             </Grid>
-            <Box sx={{
-              marginBottom: "80px",
-              marginTop: "20px"
-              // transform:{lg:"scale(0.9)",xs:"none"},
-            }}>
-              <Pagination count={totalPage} defaultPage={1} onChange={handlePageChange} boundaryCount={2} color="primary" />
-
+            <Box
+              sx={{
+                marginBottom: "80px",
+                marginTop: "20px",
+                // transform:{lg:"scale(0.9)",xs:"none"},
+              }}
+            >
+              <Pagination
+                count={totalPage}
+                defaultPage={1}
+                onChange={handlePageChange}
+                boundaryCount={2}
+                color="primary"
+              />
             </Box>
           </Grid>
-
-
-
         </Grid>
         {/* <Grid>
       <Footer />
     </Grid> */}
       </Layout>
-
-    </Grid >
+    </Grid>
   );
 };
 
 export default History;
 // const VisitCard:Array<IVisitCard> = [
-  //   {
-  //     Location: location,
-  //     locationName: "Pakistan",
-  //     name: "Kathryn Murphy",
-  //     emaillogo: email,
-  //     color: "#fff",
-  //     bgcolor: "#00CC64",
-  //     tagImg: Track,
-  //     tag: "Track",
-  //     padding: "2px 10px",
+//   {
+//     Location: location,
+//     locationName: "Pakistan",
+//     name: "Kathryn Murphy",
+//     emaillogo: email,
+//     color: "#fff",
+//     bgcolor: "#00CC64",
+//     tagImg: Track,
+//     tag: "Track",
+//     padding: "2px 10px",
 
-  //     // padding: "2px 79%",
-  //     details: "Show detail",
-  //     email: "nathan.roberts@example.com",
-  //     success: "Complete",
-  //     price: "291,07 €",
-  //     dateimg: date,
-  //     date: "Feb 2, 2019 19:28",
-  //   },
-  //   {
-  //     Location: location,
-  //     locationName: "Senegal",
-  //     name: "Floyd Miles",
-  //     emaillogo: email,
-  //     color: "#fff",
-  //     bgcolor: "#00CC64",
-  //     tagImg: Track,
-  //     tag: "Track",
-  //     padding: "2px 10px",
-  //     details: "Show detail",
-  //     email: "nathan.roberts@example.com",
-  //     success: "Complete",
-  //     price: "87,00 €",
-  //     dateimg: date,
-  //     date: "Dec 4, 2019 21:42",
-  //   },
-  //   {
-  //     Location: location,
-  //     locationName: "Santo Tome Y Principe",
-  //     name: "Darlene Robertson",
-  //     emaillogo: email,
-  //     color: "#fff",
-  //     bgcolor: "#00CC64",
-  //     tagImg: Track,
-  //     tag: "Track",
-  //     padding: "2px 10px",
-  //     details: "Show detail",
-  //     email: "nathan.roberts@example.com",
-  //     success: "Complete",
-  //     price: "255,72 €",
-  //     dateimg: date,
-  //     date: "Dec 30, 2019 07:52",
-  //   },
-  //   {
-  //     Location: location,
-  //     locationName: "Gabon",
-  //     name: "Devon Lane",
-  //     emaillogo: email,
-  //     color: "#991B1B",
-  //     bgcolor: "#FEE2E2",
-  //     tagImg: Track,
-  //     tag: "Track",
-  //     padding: "2px 10px",
-  //     details: "Show detail",
-  //     email: "nathan.roberts@example.com",
-  //     success: "Cencel",
-  //     price: "94,00 €",
-  //     dateimg: date,
-  //     date: "Mar 20, 2019 23:14",
-  //   },
-  //   {
-  //     Location: location,
-  //     locationName: "Dinamarca",
-  //     name: "Savannah Nguyen",
-  //     emaillogo: email,
-  //     color: "#92400E",
-  //     bgcolor: "#FEF3C7",
-  //     tagImg: Track,
-  //     tag: "Track",
-  //     padding: "2px 10px",
-  //     details: "Show detail",
-  //     email: "nathan.roberts@example.com",
-  //     success: "Pending",
-  //     price: "171,52 €",
-  //     dateimg: date,
-  //     date: "Mar 20, 2019 23:14",
-  //   },
-  //   {
-  //     Location: location,
-  //     locationName: "Mozambique",
-  //     name: "Jane Cooper",
-  //     emaillogo: email,
-  //     color: "#fff",
-  //     bgcolor: "#00CC64",
-  //     tagImg: Track,
-  //     tag: "Track",
-  //     padding: "2px 10px",
-  //     details: "Show detail",
-  //     email: "nathan.roberts@example.com",
-  //     success: "Complete",
-  //     price: "75,00 €",
-  //     dateimg: date,
-  //     date: "Dec 4, 2019 21:42",
-  //   },
-  //   {
-  //     Location: location,
-  //     locationName: "Italia",
-  //     name: "Esther Howard",
-  //     emaillogo: email,
-  //     color: "#1F2937",
-  //     bgcolor: "#F3F4F6",
-  //     tagImg: Track,
-  //     tag: "Track",
-  //     padding: "2px 10px",
-  //     details: "Show detail",
-  //     email: "nathan.roberts@example.com",
-  //     success: "In process",
-  //     price: "200 EUR",
-  //     dateimg: date,
-  //     date: "Dec 30, 2019 05:18",
-  //   },
-  //   {
-  //     Location: location,
-  //     locationName: "Rumania",
-  //     name: "Dianne Russell",
-  //     emaillogo: email,
-  //     color: "#fff",
-  //     bgcolor: "#00CC64",
-  //     tagImg: Track,
-  //     tag: "Track",
-  //     padding: "2px 10px",
-  //     details: "Show detail",
-  //     email: "nathan.roberts@example.com",
-  //     success: "Complete",
-  //     price: "246,00 €",
-  //     dateimg: date,
-  //     date: "Dec 7, 2019 23:26",
-  //   },
-  //   {
-  //     Location: location,
-  //     locationName: "Dinamarca",
-  //     name: "Savannah Nguyen",
-  //     emaillogo: email,
-  //     color: "#92400E",
-  //     bgcolor: "#FEF3C7",
-  //     tagImg: Track,
-  //     tag: "Track",
-  //     padding: "2px 10px",
-  //     details: "Show detail",
-  //     email: "nathan.roberts@example.com",
-  //     success: "Pending",
-  //     price: "171,52 €",
-  //     dateimg: date,
-  //     date: "Mar 20, 2019 23:14",
-  //   },
-  //   {
-  //     Location: location,
-  //     locationName: "Santo Tome Y Principe",
-  //     name: "Darlene Robertson",
-  //     emaillogo: email,
-  //     color: "#fff",
-  //     bgcolor: "#00CC64",
-  //     tagImg: Track,
-  //     tag: "Track",
-  //     padding: "2px 10px",
-  //     details: "Show detail",
-  //     email: "nathan.roberts@example.com",
-  //     success: "Complete",
-  //     price: "255,72 €",
-  //     dateimg: date,
-  //     date: "Dec 30, 2019 07:52",
-  //   },
-  // ];
+//     // padding: "2px 79%",
+//     details: "Show detail",
+//     email: "nathan.roberts@example.com",
+//     success: "Complete",
+//     price: "291,07 €",
+//     dateimg: date,
+//     date: "Feb 2, 2019 19:28",
+//   },
+//   {
+//     Location: location,
+//     locationName: "Senegal",
+//     name: "Floyd Miles",
+//     emaillogo: email,
+//     color: "#fff",
+//     bgcolor: "#00CC64",
+//     tagImg: Track,
+//     tag: "Track",
+//     padding: "2px 10px",
+//     details: "Show detail",
+//     email: "nathan.roberts@example.com",
+//     success: "Complete",
+//     price: "87,00 €",
+//     dateimg: date,
+//     date: "Dec 4, 2019 21:42",
+//   },
+//   {
+//     Location: location,
+//     locationName: "Santo Tome Y Principe",
+//     name: "Darlene Robertson",
+//     emaillogo: email,
+//     color: "#fff",
+//     bgcolor: "#00CC64",
+//     tagImg: Track,
+//     tag: "Track",
+//     padding: "2px 10px",
+//     details: "Show detail",
+//     email: "nathan.roberts@example.com",
+//     success: "Complete",
+//     price: "255,72 €",
+//     dateimg: date,
+//     date: "Dec 30, 2019 07:52",
+//   },
+//   {
+//     Location: location,
+//     locationName: "Gabon",
+//     name: "Devon Lane",
+//     emaillogo: email,
+//     color: "#991B1B",
+//     bgcolor: "#FEE2E2",
+//     tagImg: Track,
+//     tag: "Track",
+//     padding: "2px 10px",
+//     details: "Show detail",
+//     email: "nathan.roberts@example.com",
+//     success: "Cencel",
+//     price: "94,00 €",
+//     dateimg: date,
+//     date: "Mar 20, 2019 23:14",
+//   },
+//   {
+//     Location: location,
+//     locationName: "Dinamarca",
+//     name: "Savannah Nguyen",
+//     emaillogo: email,
+//     color: "#92400E",
+//     bgcolor: "#FEF3C7",
+//     tagImg: Track,
+//     tag: "Track",
+//     padding: "2px 10px",
+//     details: "Show detail",
+//     email: "nathan.roberts@example.com",
+//     success: "Pending",
+//     price: "171,52 €",
+//     dateimg: date,
+//     date: "Mar 20, 2019 23:14",
+//   },
+//   {
+//     Location: location,
+//     locationName: "Mozambique",
+//     name: "Jane Cooper",
+//     emaillogo: email,
+//     color: "#fff",
+//     bgcolor: "#00CC64",
+//     tagImg: Track,
+//     tag: "Track",
+//     padding: "2px 10px",
+//     details: "Show detail",
+//     email: "nathan.roberts@example.com",
+//     success: "Complete",
+//     price: "75,00 €",
+//     dateimg: date,
+//     date: "Dec 4, 2019 21:42",
+//   },
+//   {
+//     Location: location,
+//     locationName: "Italia",
+//     name: "Esther Howard",
+//     emaillogo: email,
+//     color: "#1F2937",
+//     bgcolor: "#F3F4F6",
+//     tagImg: Track,
+//     tag: "Track",
+//     padding: "2px 10px",
+//     details: "Show detail",
+//     email: "nathan.roberts@example.com",
+//     success: "In process",
+//     price: "200 EUR",
+//     dateimg: date,
+//     date: "Dec 30, 2019 05:18",
+//   },
+//   {
+//     Location: location,
+//     locationName: "Rumania",
+//     name: "Dianne Russell",
+//     emaillogo: email,
+//     color: "#fff",
+//     bgcolor: "#00CC64",
+//     tagImg: Track,
+//     tag: "Track",
+//     padding: "2px 10px",
+//     details: "Show detail",
+//     email: "nathan.roberts@example.com",
+//     success: "Complete",
+//     price: "246,00 €",
+//     dateimg: date,
+//     date: "Dec 7, 2019 23:26",
+//   },
+//   {
+//     Location: location,
+//     locationName: "Dinamarca",
+//     name: "Savannah Nguyen",
+//     emaillogo: email,
+//     color: "#92400E",
+//     bgcolor: "#FEF3C7",
+//     tagImg: Track,
+//     tag: "Track",
+//     padding: "2px 10px",
+//     details: "Show detail",
+//     email: "nathan.roberts@example.com",
+//     success: "Pending",
+//     price: "171,52 €",
+//     dateimg: date,
+//     date: "Mar 20, 2019 23:14",
+//   },
+//   {
+//     Location: location,
+//     locationName: "Santo Tome Y Principe",
+//     name: "Darlene Robertson",
+//     emaillogo: email,
+//     color: "#fff",
+//     bgcolor: "#00CC64",
+//     tagImg: Track,
+//     tag: "Track",
+//     padding: "2px 10px",
+//     details: "Show detail",
+//     email: "nathan.roberts@example.com",
+//     success: "Complete",
+//     price: "255,72 €",
+//     dateimg: date,
+//     date: "Dec 30, 2019 07:52",
+//   },
+// ];

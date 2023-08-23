@@ -182,7 +182,7 @@ const UseExisting = () => {
                 You can see all the details of your transaction, check that you have made no mistake if necessary you can modify information on this page.
               </Typography>
               <Box sx={{ marginBottom: "18px" }}>
-                <AppButton
+                {/* <AppButton
                   textTransform="none"
                   whiteSpace="nowrap"
                   title={"Select from existing"}
@@ -197,7 +197,7 @@ const UseExisting = () => {
                       style={{ color: "#fff", height: "33px" }}
                     />
                   }
-                />
+                /> */}
               </Box>
               <AppButton
                 title={`i'm the benefit

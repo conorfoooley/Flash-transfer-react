@@ -3,7 +3,7 @@
 // export const baseUrl =
 // 	process.env.REACT_APP_DEV_PROXY || 'http://213.136.86.184';
 // const baseUrl = 'http://localhost:8000';
-// const baseUrl = "https://flash-transfer-master.herokuapp.com";
+// export const baseUrl = "https://flash-transfer-master.herokuapp.com";
 export const baseUrl = "https://flash-transfer.com";
 
 const config = {

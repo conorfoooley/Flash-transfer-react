@@ -64,8 +64,10 @@ const Navigation: FC = () => {
 		<>
 			{/* <button onClick={() => navigate()}>go back</button> */}
 			<Routes>
-				<Route path='/' element={<Home />} />
 
+				{/* <Route path='/' element={<Protected Component={History} />} /> */}
+				<Route path='/' element={<Home />} />
+				
 				<Route path='/signin' element={<SignIn />} />
 				<Route path='/signup' element={<SignUp />} />
 				<Route path='/*' element={<PageNotFound />} />

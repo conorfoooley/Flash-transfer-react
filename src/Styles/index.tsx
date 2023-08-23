@@ -1,8 +1,8 @@
 import { Theme } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
-export const useStyles = makeStyles((theme: Theme) => ({
 
+export const useStyles = makeStyles((theme: Theme) => ({
   //   footer css
   Footer_main_container: {
     backgroundColor: "black",
@@ -78,7 +78,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     marginTop: "56px !important",
     marginBottom: "56px !important",
     [theme.breakpoints.down("sm")]: {
-      display: 'none',
+      display: "none",
     },
   },
   Copyright: {
@@ -108,8 +108,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("lg")]: {
       padding: "0px 42px 0px 0px !important",
     },
-
-
   },
   logIn_sub_Container: {
     [theme.breakpoints.down("md")]: {
@@ -213,8 +211,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     alignItems: "center",
   },
   sign_in_divider: {
-
-    '&.MuiDivider-root': {
+    "&.MuiDivider-root": {
       "&::before, &::after": {
         borderColor: "black",
       },
@@ -277,8 +274,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
       fontWeight: "700 !important",
       fontSize: "16px !important",
       lineHeight: "24px !important",
-
-    }
+    },
   },
   passowrd_instruction: {
     fontStyle: "normal !important",
@@ -308,9 +304,8 @@ export const useStyles = makeStyles((theme: Theme) => ({
     color: "#111827 !important",
     width: "400px",
     [theme.breakpoints.down("sm")]: {
-      width: "400px"
-    }
-
+      width: "400px",
+    },
   },
   Image_up_Text: {
     padding: "364px 86px 237px 82px",
@@ -331,8 +326,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
       padding: "20px 20px 20px 20px",
       lineHeight: "32px !important",
       height: "164px",
-
-    }
+    },
   },
   logIn_main_Container2: {
     padding: "0px 90px 0px 0px !important",
@@ -386,7 +380,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: "black",
     [theme.breakpoints.down("sm")]: {
       height: "52px",
-
     },
   },
   sub_nav_container: {
@@ -405,11 +398,9 @@ export const useStyles = makeStyles((theme: Theme) => ({
 
     [theme.breakpoints.down("xl")]: {
       padding: "0px 60px 0px 0px ",
-
     },
     [theme.breakpoints.down("lg")]: {
       padding: "0px 60px 0px 0px ",
-
     },
     [theme.breakpoints.down("md")]: {
       display: "none",
@@ -420,7 +411,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     margin: "0px 0px 0px 15px !important",
     [theme.breakpoints.down("xl")]: {
       margin: "0px 0px 0px 20px !important",
-
     },
 
     fontFamily: "Inter !important",
@@ -454,7 +444,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
   // end main appbar css
   FlashLogo_container: {
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   // PersonalDetails css start
@@ -477,7 +467,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
 
   // },
   My_Detail: {
-
     fontFamily: "Inter !important",
     fontWeight: "800 !important",
     fontSize: "60px !important",
@@ -487,7 +476,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: "4px !important",
     [theme.breakpoints.down("sm")]: {
       fontSize: "58px !important",
-
     },
   },
   registration: {
@@ -530,7 +518,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     lineHeight: "24px !important",
     color: "#575F6E !important",
     margin: "0px 0px 36px 0px !important",
-
   },
   Agree_With: {
     fontFamily: "Inter !important",
@@ -644,7 +631,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     padding: "24px 24px 0px 24px !important",
     [theme.breakpoints.down("sm")]: {
       padding: "20px 24px 0px 24px !important",
-
     },
   },
   tracking_number: {
@@ -782,7 +768,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     marginLeft: "15px !important",
     [theme.breakpoints.down("sm")]: {
       fontSize: "16px !important",
-    }
+    },
   },
   email_icon_Box: {
     display: "flex",
@@ -845,7 +831,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   f_a_Q_heading: {
-
     fontStyle: "normal !important",
     fontWeight: "800 !important",
     fontSize: "30px !important",
@@ -969,7 +954,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   refer_friend_container1: {
-
     padding: "56px 140px 88px 140px !important",
     backgroundColor: "#F7FDFF",
     [theme.breakpoints.down("sm")]: {
@@ -979,11 +963,10 @@ export const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   refer_friend_subcontainer1: {
-
     [theme.breakpoints.down("sm")]: {
       // display: "flex",
       display: "flex",
-      justifyContent: "center"
+      justifyContent: "center",
 
       // justifyContent:"center",
 
@@ -1150,7 +1133,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
       padding: "0px -20px !important",
       marginBottom: "15px !important",
       fontSize: "15px !important",
-
     },
   },
   Belogs_cards_box: {
@@ -1159,7 +1141,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
 
     borderRadius: "5px",
     border: "1px solid #D1D5DB",
-    '&:hover': {
+    "&:hover": {
       border: "none",
 
       boxShadow: " 0px 20px 40px rgba(0, 0, 0, 0.2)",
@@ -1302,7 +1284,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     textAlign: "center",
   },
   Find_location_container1: {
-
     // padding: "63px 113px 264px 113px !important",
     [theme.breakpoints.down("sm")]: {
       // padding: "50px 20px !important",
@@ -1364,7 +1345,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     lineHeight: "20px !important",
     color: "#374151 !important",
     [theme.breakpoints.down("sm")]: {
-
       marginTop: "20px !important",
     },
   },
@@ -1400,7 +1380,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     lineHeight: "28px !important",
     color: "#000 !important",
     marginLeft: "15px !important",
-
   },
   icon_name_container: {
     display: "flex",
@@ -1422,7 +1401,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       margin: "10px 10px !important",
       padding: "15px 10px !important",
-
     },
   },
   agent_padding: {
@@ -1436,7 +1414,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     // justifyContent: "space-around",
     padding: "0px 0px 0px 55px !important",
-
   },
   location_btn: {
     marginLeft: "20px !important",
@@ -1446,7 +1423,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
   },
   hide_break_agent: {
     [theme.breakpoints.down("sm")]: {
-      display: "none"
+      display: "none",
     },
   },
 
@@ -1462,7 +1439,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
       position: "none !important",
       top: "0",
       left: "0",
-    }
+    },
   },
   camera_box: {
     height: "48px",
@@ -1475,7 +1452,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
       position: "none !important",
       top: "0",
       left: "0",
-    }
+    },
   },
   Profile_container_1: {
     height: "383px",
@@ -1489,18 +1466,18 @@ export const useStyles = makeStyles((theme: Theme) => ({
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-    }
+    },
   },
   Profile_container_2: {
     padding: "0px 112px !important",
     background: "#F7FDFF",
     [theme.breakpoints.down("sm")]: {
-
-      display: "flex", justifyContent: "center",
+      display: "flex",
+      justifyContent: "center",
       padding: "0px 70px !important",
 
       // padding: "0px 112px 0px 110px !important",
-    }
+    },
   },
   Numan: {
     fontFamily: "Inter !important",
@@ -1513,7 +1490,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
       fontWeight: "700 !important",
       fontSize: "14px !important",
       lineHeight: "32px !important",
-    }
+    },
   },
   customer_id: {
     fontFamily: "Inter !important",
@@ -1525,43 +1502,37 @@ export const useStyles = makeStyles((theme: Theme) => ({
       fontWeight: "400 !important",
       fontSize: "12px !important",
       lineHeight: "24px !important",
-    }
+    },
   },
   Profile_sub_container_2: {
     marginTop: "-69px",
     zIndex: "999",
     [theme.breakpoints.down("sm")]: {
       marginTop: "-8px",
-
-
-
-
-    }
+    },
   },
   hide_noman_btn: {
     [theme.breakpoints.down("sm")]: {
-      display: "none !important"
-    }
+      display: "none !important",
+    },
   },
   grid_xs_12_conatiner: {
     display: "flex",
     [theme.breakpoints.down("sm")]: {
-
       display: "flex",
 
       alignItems: "center",
       flexDirection: "row",
-      paddingBottom: "10px"
-    }
+      paddingBottom: "10px",
+    },
   },
   main_contianer_profile_pic: {
     width: "100% !important",
     padding: "112px 0px 0px 0px !important",
     marginLeft: "20px !important",
     [theme.breakpoints.down("sm")]: {
-
       padding: "0px 0px 0px 0px !important",
-    }
+    },
   },
   continer_id_btn: {
     display: "flex",
@@ -1572,22 +1543,20 @@ export const useStyles = makeStyles((theme: Theme) => ({
     background: "#F7FDFF",
     [theme.breakpoints.down("sm")]: {
       padding: "0px 0px !important",
-    }
+    },
   },
   noman_pic_settings: {
     [theme.breakpoints.down("sm")]: {
       width: "60px !important",
       height: "60px !important",
-
-    }
+    },
   },
   sub_Profile_container_3: {
     padding: "56px 103px 0px 103px !important",
     backgroundColor: "#fff",
     [theme.breakpoints.down("sm")]: {
       padding: "20px 20px !important",
-
-    }
+    },
   },
   p_F_name: {
     fontFamily: "Inter !important",
@@ -1596,7 +1565,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     lineHeight: "20px !important",
     color: "#374151 !important",
     marginBottom: "12px !important",
-
   },
 
   // FindLocationProcess2 css start
@@ -1606,9 +1574,8 @@ export const useStyles = makeStyles((theme: Theme) => ({
 
     [theme.breakpoints.down("sm")]: {
       transform: "scale(0.9)",
-      padding: "20px 0px !important"
-    }
-
+      padding: "20px 0px !important",
+    },
   },
   find_location_h1: {
     fontFamily: "Inter !important",
@@ -1623,8 +1590,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
       fontSize: "24px !important",
       lineHeight: "32px !important",
       marginBottom: "20px !important",
-
-    }
+    },
   },
   find_location_h1_description: {
     width: "550px",
@@ -1641,8 +1607,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
       fontSize: "15px !important",
       lineHeight: "24px !important",
       marginBottom: "20px !important",
-
-    }
+    },
   },
   error_name: {
     fontFamily: "Inter !important",
@@ -1651,11 +1616,10 @@ export const useStyles = makeStyles((theme: Theme) => ({
     lineHeight: "24px !important",
     color: "#9DAFBD !important",
     [theme.breakpoints.down("sm")]: {
-
       fontFamily: "Inter !important",
       fontSize: "12px !important",
       lineHeight: "20px !important",
-    }
+    },
   },
   error_container: {
     background: "#FFE1E1 !important",
@@ -1665,7 +1629,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.05)",
     [theme.breakpoints.down("sm")]: {
       padding: "10px 0px !important",
-    }
+    },
   },
   warning_icon: {
     verticalAlign: "bottom",
@@ -1675,8 +1639,8 @@ export const useStyles = makeStyles((theme: Theme) => ({
   find_location_process_3_container: {
     padding: "0px 112px !important",
     [theme.breakpoints.down("sm")]: {
-      padding: "0px 10px !important"
-    }
+      padding: "0px 10px !important",
+    },
   },
   send_FRom: {
     fontFamily: "Inter !important",
@@ -1686,8 +1650,8 @@ export const useStyles = makeStyles((theme: Theme) => ({
     color: "#374151 !important",
     marginBottom: "4px !important",
     [theme.breakpoints.down("sm")]: {
-      paddingTop: "20px !important"
-    }
+      paddingTop: "20px !important",
+    },
   },
   Current_Location: {
     fontFamily: "Inter !important",
@@ -1701,8 +1665,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
       fontWeight: "400 !important",
       fontSize: "12px !important",
       lineHeight: "24px !important",
-
-    }
+    },
   },
   try_to_do: {
     fontFamily: "Inter !important",
@@ -1717,7 +1680,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
       fontSize: "24px !important",
 
       lineHeight: "32px !important",
-    }
+    },
   },
   pick_up_money: {
     marginLeft: "20px !important",
@@ -1725,8 +1688,8 @@ export const useStyles = makeStyles((theme: Theme) => ({
   find_location_process_4_container: {
     padding: "56px 112px !important",
     [theme.breakpoints.down("sm")]: {
-      padding: "10px 0px !important"
-    }
+      padding: "10px 0px !important",
+    },
   },
   Visit_us: {
     fontFamily: "Inter !important",
@@ -1742,7 +1705,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
       fontWeight: "800 !important",
       fontSize: "24px !important",
       lineHeight: "29px !important",
-    }
+    },
   },
   Visit_us_description: {
     fontFamily: "Inter !important",
@@ -1756,13 +1719,11 @@ export const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       transform: "scale(0.9)",
 
-
       marginBottom: "20px !important",
       fontSize: "15px !important",
 
       width: "100%",
-
-    }
+    },
   },
   social_media_images: {
     marginLeft: "10px !important",
@@ -1775,7 +1736,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     backgroundSize: "cover",
     [theme.breakpoints.down("sm")]: {
       padding: "200px 20px",
-    }
+    },
   },
   Matthews_Street: {
     fontFamily: "Inter !important",
@@ -1792,7 +1753,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     borderRadius: "24px",
     [theme.breakpoints.down("sm")]: {
       padding: "32px 59px ",
-    }
+    },
   },
 
   // page not found css start
@@ -1846,7 +1807,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     padding: "154px 128px 48px !important",
     [theme.breakpoints.down("sm")]: {
       padding: "20px 20px !important",
-    }
+    },
   },
 
   // registration page for merchant
@@ -1854,10 +1815,9 @@ export const useStyles = makeStyles((theme: Theme) => ({
     padding: "42px 112px 56px !important",
     background: "#F9FAFB",
     [theme.breakpoints.down("sm")]: {
-
       padding: "20px 0px !important",
       background: "#fff",
-    }
+    },
   },
   registration_text: {
     fontFamily: "Inter !important",
@@ -1870,7 +1830,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
       fontWeight: "700 !important",
       fontSize: "23px !important",
       lineHeight: "32px !important",
-    }
+    },
   },
   merchatnt_container_2: {
     padding: "0px 112px 56px !important",
@@ -1878,9 +1838,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       padding: "20px 10px !important",
       background: "#fff",
-
-    }
-
+    },
   },
   form_grid: {
     padding: "24px 24px !important",
@@ -1889,7 +1847,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       padding: "0px 0px !important",
       background: "#fff",
-    }
+    },
   },
   send_identity: {
     fontFamily: "Inter !important",
@@ -1908,7 +1866,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
       fontWeight: "700 !important",
       fontSize: "12px !important",
       lineHeight: "32px !important",
-    }
+    },
   },
   images_format: {
     fontFamily: "Inter !important",
@@ -1935,7 +1893,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     textAlign: "center",
     [theme.breakpoints.down("sm")]: {
       padding: "15px 0px !important",
-    }
+    },
   },
   btn_submit_form_box: {
     display: "flex",
@@ -1959,7 +1917,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       fontSize: "24px !important",
       lineHeight: "29px !important",
-    }
+    },
   },
   contact_us_text_description: {
     fontFamily: "Inter !important",
@@ -1971,7 +1929,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       fontSize: "16px !important",
       lineHeight: "24px !important",
-    }
+    },
   },
   address_description: {
     fontFamily: "Inter !important",
@@ -1987,7 +1945,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       padding: "20px 10px !important",
       background: "#F7FDFF !important",
-    }
+    },
   },
   contact_form_container: {
     padding: "50px 50px !important",
@@ -1996,7 +1954,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       padding: "0px 0px !important",
       background: "#F7FDFF !important",
-    }
+    },
   },
   contact_form2: {
     padding: "40px 0px !important",
@@ -2005,8 +1963,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
       padding: "0px 0px !important",
 
       backgroundColor: "#F7FDFF !important",
-
-    }
+    },
   },
 
   // Notification css start
@@ -2021,8 +1978,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
       fontWeight: "700 !important",
       fontSize: "24px !important",
       lineHeight: "32px !important",
-    }
-
+    },
   },
   Manage_my_card: {
     fontFamily: "Inter !important",
@@ -2065,13 +2021,11 @@ export const useStyles = makeStyles((theme: Theme) => ({
     marginRight: "22px",
   },
   notification_main_container: {
-
     backgroundColor: "#F7FDFF",
     padding: "55px 117px 148px",
     [theme.breakpoints.down("sm")]: {
       padding: "20px 0px",
-
-    }
+    },
   },
 
   // Ok page Personal verification css start
@@ -2082,7 +2036,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     lineHeight: "60px !important",
     color: "#000 !important",
     marginBottom: "56px !important",
-
   },
   basic_text: {
     fontFamily: "Inter !important",
@@ -2105,7 +2058,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     padding: "42px 193px 151px 108px !important",
     [theme.breakpoints.down("sm")]: {
       padding: "20px 20px !important",
-    }
+    },
   },
   verified_btn_container: {
     marginTop: "114px !important",
@@ -2205,7 +2158,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     // height:"357px",
     [theme.breakpoints.down("sm")]: {
       width: "170px",
-
     },
   },
   SamsungGalaxyS8Big_b: {
@@ -2214,7 +2166,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     // height:"624.88px",
     [theme.breakpoints.down("sm")]: {
       width: "170px",
-
     },
     // width:"224px"
   },
@@ -2254,7 +2205,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   appinfo_container3: {
-
     // padding: "66px 130px 56px 130px !important",
     backgroundColor: "#000",
     [theme.breakpoints.down("sm")]: {
@@ -2264,16 +2214,17 @@ export const useStyles = makeStyles((theme: Theme) => ({
   },
   app_info_cards: {
     justifyContent: "space-between",
-    // alignItems: "center", 
+    // alignItems: "center",
     displlay: "flex",
     //  padding: "0px 10px !important",
-    flxDirection: "row", display: "flex",
+    flxDirection: "row",
+    display: "flex",
     // transform: "scale(0.8)",
     padding: "40px 20px !important",
     backgroundColor: " #192431",
     borderRadius: "16px",
     [theme.breakpoints.down("sm")]: {
-      marginLeft: "-10px"
+      marginLeft: "-10px",
     },
   },
   Download_text: {
@@ -2303,7 +2254,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
       fontWeight: "700 !important",
       fontSize: "24px !important",
       lineHeight: "32px !important",
-    }
+    },
   },
   My_Cards_h2: {
     fontFamily: "Inter !important",
@@ -2329,14 +2280,14 @@ export const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: "#F7FDFF",
     [theme.breakpoints.down("sm")]: {
       padding: "20px 20px !important",
-    }
+    },
   },
   settings_container_2: {
     padding: "0px 117px 32px 73px !important",
     backgroundColor: "#F7FDFF",
     [theme.breakpoints.down("sm")]: {
       padding: "20px 0px !important",
-    }
+    },
   },
   settings_my_cards: {
     padding: "20px 0px 20px 0px",
@@ -2344,7 +2295,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
       padding: "20px 0px 20px 0px",
 
       // backgroundColor: "#F7FDFF !important",
-    }
+    },
   },
   settings_my_cards23: {
     padding: "20px 110px 20px 10px",
@@ -2353,7 +2304,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
       padding: "20px 90px 20px 10px",
 
       // backgroundColor: "#F7FDFF !important",
-    }
+    },
   },
   settings_my_cards2: {
     marginBottom: "300px",
@@ -2363,7 +2314,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
       marginBottom: "-20px",
 
       // backgroundColor: "#F7FDFF !important",
-    }
+    },
   },
   settings_cards_main_box: {
     padding: "30px 34px 27px !important",
@@ -2438,7 +2389,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: "#F7FDFF",
     [theme.breakpoints.down("sm")]: {
       padding: "20px 20px !important",
-    }
+    },
   },
   paymethod_btn: {
     marginLeft: "8px !important",
@@ -2470,11 +2421,8 @@ export const useStyles = makeStyles((theme: Theme) => ({
       borderRight: "1px  solid #E5E7EB",
       borderLeft: "1px  solid #E5E7EB",
       backgroundColor: "white",
-
-
-    }
+    },
   },
-
 
   // new css of log in page
   login_page_main_container: {
@@ -2510,7 +2458,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       // textAlign: "center !important",
       fontSize: "41px !important",
-
     },
   },
   grid_form_container: {
@@ -2543,10 +2490,9 @@ export const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: "#F7FDFF",
     [theme.breakpoints.down("md")]: {
       padding: "0px 0px",
-    }
+    },
   },
   grid_container_md_7: {
-
     // padding: "364px 86px 237px 82px",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
@@ -2560,7 +2506,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       padding: "0px 0px",
       height: "164px",
-      backgroundPosition: "0% 35%"
+      backgroundPosition: "0% 35%",
     },
   },
   sign_up_grid_5_box: {
@@ -2571,14 +2517,13 @@ export const useStyles = makeStyles((theme: Theme) => ({
     },
     [theme.breakpoints.down("sm")]: {
       padding: "20px 10px",
-    }
+    },
   },
   // -----------------------About-Page css started here
 
   About_container: {
     backgroundColor: "#F7FDFF",
   },
-
 
   Top_title: {
     [theme.breakpoints.down("sm")]: {
@@ -2600,7 +2545,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     flexDirection: "column",
     [theme.breakpoints.down("sm")]: {
       marginBottom: "-40px",
-
     },
   },
 
@@ -2622,7 +2566,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     padding: "33px 24px 51px 24px",
     borderRadius: "24px",
     backgroundColor: "#fff",
-
   },
   Feature_title: {
     fontFamily: "Inter !important",
@@ -2802,7 +2745,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
   titlecontainer: {
     display: "flex",
     justifyContent: "center",
-
   },
   privacyhead: {
     marginTop: "66px",
@@ -2927,7 +2869,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
   },
   Review: {
     [theme.breakpoints.down("sm")]: {
-
       fontSize: "24px !important",
       fontWeight: "700 !important",
       lineHeight: "32px !important",
@@ -2969,7 +2910,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     color: "#9DAFBD",
   },
 
-
   sender: {
     fontFamily: "Inter !important",
     fontSize: "24px !important",
@@ -3005,10 +2945,9 @@ export const useStyles = makeStyles((theme: Theme) => ({
     fontFamily: "Inter !important",
     fontSize: "24px !important",
     fontWeight: "700 !important",
-    lineHeight: "32px !important"
-
-
+    lineHeight: "32px !important",
   },
+
   //---------------------- addnew css end
   //---------------------- Bpayment css start
 
@@ -3041,59 +2980,52 @@ export const useStyles = makeStyles((theme: Theme) => ({
   //---------------------- Bpayment css end
 
   overlapIcon: {
-    position: 'absolute',
-    bottom: '-80px',
-    left: '20%',
+    position: "absolute",
+    bottom: "-80px",
+    left: "20%",
   },
   usps: {
     fontFamily: "Inter !important",
-    fontSize: '24px !important',
-    fontWeight: '400 !important',
-    lineHeight: '35px !important',
-    letterSpacing: '0em !important'
-
+    fontSize: "24px !important",
+    fontWeight: "400 !important",
+    lineHeight: "35px !important",
+    letterSpacing: "0em !important",
   },
   flashBoxesLine: {
-    margin: '0 auto',
-    marginTop: '100px',
-    marginBottom: '10px',
-    display: 'block'
-
+    margin: "0 auto",
+    marginTop: "100px",
+    marginBottom: "10px",
+    display: "block",
   },
   flashBoxes: {
-    background: '#181818',
+    background: "#181818",
     filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
-    padding: '30px',
-    borderRadius: '30px',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    margin: '15px'
+    padding: "30px",
+    borderRadius: "30px",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    margin: "15px",
   },
   flashBoxesPara: {
     fontFamily: "Inter !important",
-    fontWeight: '400 !important',
-    fontSize: '20px !important',
-    opacity: '0.7'
-
-
-
+    fontWeight: "400 !important",
+    fontSize: "20px !important",
+    opacity: "0.7",
   },
   flashBoxesAnchor: {
-    color: '#FBBF04 !important',
+    color: "#FBBF04 !important",
     fontFamily: "Inter !important",
 
-    fontWeight: '400 !important',
+    fontWeight: "400 !important",
 
-    fontSize: '20px !important',
-    textDecoration: 'none !important'
-
+    fontSize: "20px !important",
+    textDecoration: "none !important",
   },
   flashBoxesImage: {
-    maxWidth: '100%',
-    marginTop: '20px'
-
+    maxWidth: "100%",
+    marginTop: "20px",
   },
   // Home page css
 
@@ -3106,7 +3038,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
   Section_1_grid_1: {
     [theme.breakpoints.down("md")]: {
       padding: "50px 265px 50px 50px !important",
-
     },
     [theme.breakpoints.down("sm")]: {
       padding: "50px 17px 0px 17px !important",
@@ -3205,15 +3136,12 @@ export const useStyles = makeStyles((theme: Theme) => ({
     lineHeight: "28px !important",
     fontWeight: "500 !important",
 
-
     [theme.breakpoints.down("md")]: {
       fontSize: "12px !important",
       fontWeight: "500 !important",
 
       fontFamily: "Inter !important",
       lineHeight: "28px !important",
-
-
     },
   },
   Binance_Main_container: {
@@ -3229,7 +3157,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
       // margin: "0px -10px",
       padding: "20px 20px !important",
     },
-
   },
   orTxt: {
     fontStyle: "normal !important",
@@ -3295,7 +3222,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     // [theme.breakpoints.down("sm")]: {
     //   padding: "15px 10px !important",
     // },
-
   },
   logo_dropdown_Box: {
     display: "flex",
@@ -3460,16 +3386,13 @@ export const useStyles = makeStyles((theme: Theme) => ({
     height: "75.82px",
     padding: "5px",
     borderRadius: "8px !important",
-
   },
   m_Container3: {
     padding: "60px 220px 25px 160px !important",
     [theme.breakpoints.down("xl")]: {
       padding: "60px 140px 25px 90px !important",
-
     },
     [theme.breakpoints.down("sm")]: {
-
       padding: "0px 0px 0px 0px !important",
     },
   },
@@ -3477,7 +3400,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     // padding: "60px 112px 100px !important",
     // [theme.breakpoints.down("lg")]: {
     // padding: "60px 112px 100px !important",
-    // 
+    //
     marginTop: "-10px",
     marginBottom: "-10px",
 
@@ -3695,7 +3618,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("md")]: {
       textAlign: "center",
     },
-
   },
 
   m_Container_8: {
@@ -3756,7 +3678,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     },
     [theme.breakpoints.down("sm")]: {
       padding: "0px 17px 0px !important",
-      marginTop: "0px"
+      marginTop: "0px",
     },
     // backgroundColor: "black",
   },
@@ -3776,7 +3698,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       textAlign: "center !important",
       marginBottom: "-20px !important",
-
     },
   },
   world_First_Fast_Description: {
@@ -3843,12 +3764,10 @@ export const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       fontSize: "15px !important",
       fontFamily: "Inter !important",
-
     },
     [theme.breakpoints.down("lg")]: {
       fontSize: "14px !important",
       fontFamily: "Inter !important",
-
     },
     [theme.breakpoints.down("md")]: {
       padding: "12px 9px !important",
@@ -3863,7 +3782,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
   //   },
   // },
 
-
   // ------------------------------------throught payment
   error_container1: {
     margin: "0px 20px",
@@ -3874,7 +3792,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.05)",
     [theme.breakpoints.down("sm")]: {
       padding: "10px 10px !important",
-    }
+    },
   },
   all_a: {
     fontFamily: "Inter !important",
@@ -3885,9 +3803,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     color: "#252631 !important",
   },
 
-
   // ------------------------------------Frame page
-
 
   // country_paragreen: {
   //   fontFamily: "Inter !important",
@@ -3903,7 +3819,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     lineHeight: "20px !important",
     // color: "#34A853",
   },
-  // ------------------------------------country modal css 
+  // ------------------------------------country modal css
 
   modaleContry: {
     top: "360px",
@@ -3911,12 +3827,9 @@ export const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("xl")]: {
       top: "360px",
       left: "90%",
-
     },
-
-
   },
-  // ------------------------------------Complaints page css 
+  // ------------------------------------Complaints page css
 
   Complainthead: {
     marginTop: "50px",
@@ -3932,21 +3845,21 @@ export const useStyles = makeStyles((theme: Theme) => ({
     fontFamily: "Inter !important",
     lineHeight: "27px !important",
     // padding: "10px 0px",
-    color: "rgba(0, 0, 0, 0.6)"
+    color: "rgba(0, 0, 0, 0.6)",
   },
   Complainttitle: {
     fontSize: "16px !important",
     fontWeight: "400 !important",
     fontFamily: "Inter !important",
     lineHeight: "27px !important",
-    color: "black"
+    color: "black",
   },
   Complaintparablack: {
     fontSize: "16px !important",
     fontWeight: "400 !important",
     fontFamily: "Inter !important",
     lineHeight: "27px !important",
-    color: "black"
+    color: "black",
   },
   //----------- backTransfer page
   error_message: {
@@ -3957,6 +3870,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.05)",
     [theme.breakpoints.down("sm")]: {
       padding: "10px 10px !important",
-    }
+    },
   },
-}))
+}));

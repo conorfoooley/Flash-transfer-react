@@ -120,7 +120,7 @@ const AddNew = () => {
               Enter the information of your beneficiary who will receive the amount of your transaction. If you want to send to a beneficiary already registered you can select it in "Select from existing". If you are the beneficiary, you can click directly on "i’m the benefit" to automatically fill in the fields.
               </Typography>
               <Box sx={{ marginBottom: "18px" }}>
-                <AppButton
+                {/* <AppButton
 
                   textTransform="none"
                   title={"Select from existing"}
@@ -135,7 +135,7 @@ const AddNew = () => {
                       style={{ color: "#fff", height: "33px" }}
                     />
                   }
-                />
+                /> */}
               </Box>
               <Box sx={{ display: { lg: "flex", xs: "flex" } }}>
 
